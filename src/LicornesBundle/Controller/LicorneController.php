@@ -2,11 +2,11 @@
 
 namespace LicornesBundle\Controller;
 
+use LicornesBundle\LicornesBundle;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use LicornesBundle\Entity\Licorne;
-use LicornesBundle\Form\LicorneType;
 
 /**
  * Licorne controller.
@@ -24,7 +24,7 @@ class LicorneController extends Controller
 
         $licornes = $em->getRepository('LicornesBundle:Licorne')->findAll();
 
-        return $this->render('licorne/index.html.twig', array(
+        return $this->render('LicornesBundle:licorne:index.html.twig', array(
             'licornes' => $licornes,
         ));
     }
@@ -35,22 +35,34 @@ class LicorneController extends Controller
      */
     public function newAction(Request $request)
     {
+		$em = $this->getDoctrine()->getManager();
         $licorne = new Licorne();
+
         $form = $this->createForm('LicornesBundle\Form\LicorneType', $licorne);
         $form->handleRequest($request);
+		$categories = $em->getRepository('LicornesBundle:LicorneCategorie')->findAll();
+		$maCategorie = $categories[rand(0, count($categories) - 1)];
+		$licorne->setTypePelage($maCategorie->getTypePelage());
+		$licorne->setCouleurYeux($maCategorie->getCouleurYeux());
+		$licorne->setTypeCorne($maCategorie->getTypeCorne());
+		$licorne->setHabitat($maCategorie->getHabitat());
 
-        if ($form->isSubmitted() && $form->isValid()) {
+		echo '<h3> Felicitation ! vous avez attrape une nouvelle licorne !</h3>';
+		if ($form->isSubmitted() && $licorne->getNom()) {
             $em = $this->getDoctrine()->getManager();
+
+			var_dump($licorne);
             $em->persist($licorne);
             $em->flush();
 
-            return $this->redirectToRoute('licorne_show', array('id' => $licorne->getId()));
+			return $this->redirectToRoute('licorne_show', array('id' => $licorne->getId()));
         }
 
-        return $this->render('licorne/new.html.twig', array(
-            'licorne' => $licorne,
-            'form' => $form->createView(),
-        ));
+        return $this->render('LicornesBundle:licorne:new.html.twig', array(
+				'licorne' => $licorne,
+				'form' => $form->createView(),
+			)
+		);
     }
 
     /**
@@ -61,7 +73,7 @@ class LicorneController extends Controller
     {
         $deleteForm = $this->createDeleteForm($licorne);
 
-        return $this->render('licorne/show.html.twig', array(
+        return $this->render('LicornesBundle:licorne:show.html.twig', array(
             'licorne' => $licorne,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -85,7 +97,7 @@ class LicorneController extends Controller
             return $this->redirectToRoute('licorne_edit', array('id' => $licorne->getId()));
         }
 
-        return $this->render('licorne/edit.html.twig', array(
+        return $this->render('LicornesBundle:licorne:edit.html.twig', array(
             'licorne' => $licorne,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

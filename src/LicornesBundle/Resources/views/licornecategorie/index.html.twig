@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>LicorneCategorie list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Typepelage</th>
+                <th>Couleuryeux</th>
+                <th>Typecorne</th>
+                <th>Habitat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for licorneCategorie in licorneCategories %}
+            <tr>
+                <td><a href="{{ path('licornecategorie_show', { 'id': licorneCategorie.id }) }}">{{ licorneCategorie.id }}</a></td>
+                <td>{{ licorneCategorie.nom }}</td>
+                <td>{{ licorneCategorie.typePelage }}</td>
+                <td>{{ licorneCategorie.couleurYeux }}</td>
+                <td>{{ licorneCategorie.typeCorne }}</td>
+                <td>{{ licorneCategorie.habitat }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('licornecategorie_show', { 'id': licorneCategorie.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('licornecategorie_edit', { 'id': licorneCategorie.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('licornecategorie_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

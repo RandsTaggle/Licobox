@@ -1,12 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Licorne creation</h1>
+    <h4>Donnez-lui un nom !</h4>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
+    {{ form_start(form.nom) }}
+        {{ form_label(form.nom) }}
+        {{ form_widget(form.nom) }}
         <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    {{ form_end(form.nom) }}
 
     <ul>
         <li>

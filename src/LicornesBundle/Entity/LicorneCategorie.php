@@ -3,23 +3,12 @@
 namespace LicornesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
- * Licorne
+ * LicorneCategorie
  */
-class Licorne
+class LicorneCategorie
 {
-	public function __construct() {
-		$this->datePrise = new \DateTime('now');
-	}
-
-
-
-	/**************************/
-	/***** GENERATED CODE *****/
-	/**************************/
-
     /**
      * @var int
      */
@@ -50,11 +39,6 @@ class Licorne
      */
     private $habitat;
 
-    /**
-     * @var \DateTime
-     */
-    private $datePrise;
-
 
     /**
      * Get id
@@ -70,7 +54,7 @@ class Licorne
      * Set nom
      *
      * @param string $nom
-     * @return Licorne
+     * @return LicorneCategorie
      */
     public function setNom($nom)
     {
@@ -93,7 +77,7 @@ class Licorne
      * Set typePelage
      *
      * @param string $typePelage
-     * @return Licorne
+     * @return LicorneCategorie
      */
     public function setTypePelage($typePelage)
     {
@@ -116,7 +100,7 @@ class Licorne
      * Set couleurYeux
      *
      * @param string $couleurYeux
-     * @return Licorne
+     * @return LicorneCategorie
      */
     public function setCouleurYeux($couleurYeux)
     {
@@ -139,7 +123,7 @@ class Licorne
      * Set typeCorne
      *
      * @param string $typeCorne
-     * @return Licorne
+     * @return LicorneCategorie
      */
     public function setTypeCorne($typeCorne)
     {
@@ -162,7 +146,7 @@ class Licorne
      * Set habitat
      *
      * @param string $habitat
-     * @return Licorne
+     * @return LicorneCategorie
      */
     public function setHabitat($habitat)
     {
@@ -179,15 +163,5 @@ class Licorne
     public function getHabitat()
     {
         return $this->habitat;
-    }
-
-    /**
-     * Get datePrise
-     *
-     * @return \DateTime 
-     */
-    public function getDatePrise()
-    {
-        return $this->datePrise;
     }
 }
