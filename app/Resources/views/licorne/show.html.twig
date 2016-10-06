@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Licorne</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ licorne.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ licorne.nom }}</td>
+            </tr>
+            <tr>
+                <th>Typepelage</th>
+                <td>{{ licorne.typePelage }}</td>
+            </tr>
+            <tr>
+                <th>Couleuryeux</th>
+                <td>{{ licorne.couleurYeux }}</td>
+            </tr>
+            <tr>
+                <th>Typecorne</th>
+                <td>{{ licorne.typeCorne }}</td>
+            </tr>
+            <tr>
+                <th>Habitat</th>
+                <td>{{ licorne.habitat }}</td>
+            </tr>
+            <tr>
+                <th>Dateprise</th>
+                <td>{% if licorne.datePrise %}{{ licorne.datePrise|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('licorne_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('licorne_edit', { 'id': licorne.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

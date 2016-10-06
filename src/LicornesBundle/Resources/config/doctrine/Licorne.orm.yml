@@ -1,0 +1,29 @@
+LicornesBundle\Entity\Licorne:
+    type: entity
+    table: null
+    repositoryClass: LicornesBundle\Repository\LicorneRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: '128'
+        typePelage:
+            type: string
+            length: 255
+        couleurYeux:
+            type: string
+            length: 255
+        typeCorne:
+            type: string
+            length: 255
+        habitat:
+            type: string
+            length: 255
+        datePrise:
+            type: datetime
+    lifecycleCallbacks: {  }
