@@ -22,3 +22,8 @@ licorne_delete:
     path:     /{id}/delete
     defaults: { _controller: "LicornesBundle:Licorne:delete" }
     methods:  DELETE
+
+licorne_generateLicorne:
+    path:     /generateLicorne
+    defaults: { _controller: "LicornesBundle:Licorne:generateLicorne" }
+    methods:  [GET, POST]

@@ -1,7 +1,12 @@
+licornes_homepage:
+    path:     /
+    defaults: { _controller: LicornesBundle:Default:index }
+
 licornes_licorne:
     resource: "@LicornesBundle/Resources/config/routing/licorne.yml"
     prefix:   /licorne
 
-licornes_homepage:
-    path:     /
-    defaults: { _controller: LicornesBundle:Default:index }
+
+licornes_licornecategorie:
+        resource: "@LicornesBundle/Resources/config/routing/licornecategorie.yml"
+        prefix:   /licornecategorie

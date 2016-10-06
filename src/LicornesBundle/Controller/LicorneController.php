@@ -2,11 +2,12 @@
 
 namespace LicornesBundle\Controller;
 
+use LicornesBundle\LicornesBundle;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use LicornesBundle\Entity\Licorne;
-use LicornesBundle\Form\LicorneType;
+use LicornesBundle\Form\LicorneCategory;
 
 /**
  * Licorne controller.
@@ -35,7 +36,15 @@ class LicorneController extends Controller
      */
     public function newAction(Request $request)
     {
+		$em = $this->getDoctrine()->getManager();
         $licorne = new Licorne();
+		$categories = $em->getRepository('LicornesBundle:LicorneCategorie')->findAll();
+		$maCategorie = $categories[rand(0, count($categories))];
+		var_dump($licorne);
+		var_dump($maCategorie);
+		LicornesBundle::Entity::Licorne::$licorne.setCouleurYeux($maCategorie.couleurYeux);
+		var_dump($licorne);
+
         $form = $this->createForm('LicornesBundle\Form\LicorneType', $licorne);
         $form->handleRequest($request);
 
