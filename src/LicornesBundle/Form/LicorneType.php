@@ -20,7 +20,6 @@ class LicorneType extends AbstractType
             ->add('couleurYeux')
             ->add('typeCorne')
             ->add('habitat')
-            ->add('datePrise', 'datetime')
         ;
     }
     

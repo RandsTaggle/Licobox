@@ -4,9 +4,11 @@
     <h1>Licorne creation</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
+        <p> Choisir un nom :</p>
+        {{ form_label(form.nom) }}
+        {{ form_widget(form.nom) }}
         <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    {{ form_end(form.nom) }}
 
     <ul>
         <li>

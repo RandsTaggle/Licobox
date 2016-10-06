@@ -24,7 +24,7 @@ class LicorneController extends Controller
 
         $licornes = $em->getRepository('LicornesBundle:Licorne')->findAll();
 
-        return $this->render('licorne/index.html.twig', array(
+        return $this->render('LicornesBundle:licorne:index.html.twig', array(
             'licornes' => $licornes,
         ));
     }
@@ -47,7 +47,7 @@ class LicorneController extends Controller
             return $this->redirectToRoute('licorne_show', array('id' => $licorne->getId()));
         }
 
-        return $this->render('licorne/new.html.twig', array(
+        return $this->render('LicornesBundle:licorne:new.html.twig', array(
             'licorne' => $licorne,
             'form' => $form->createView(),
         ));
@@ -61,7 +61,7 @@ class LicorneController extends Controller
     {
         $deleteForm = $this->createDeleteForm($licorne);
 
-        return $this->render('licorne/show.html.twig', array(
+        return $this->render('LicornesBundle:licorne:show.html.twig', array(
             'licorne' => $licorne,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -85,7 +85,7 @@ class LicorneController extends Controller
             return $this->redirectToRoute('licorne_edit', array('id' => $licorne->getId()));
         }
 
-        return $this->render('licorne/edit.html.twig', array(
+        return $this->render('LicornesBundle:licorne:edit.html.twig', array(
             'licorne' => $licorne,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
