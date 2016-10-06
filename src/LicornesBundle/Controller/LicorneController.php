@@ -7,7 +7,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use LicornesBundle\Entity\Licorne;
-use LicornesBundle\Form\LicorneCategory;
 
 /**
  * Licorne controller.
@@ -38,28 +37,32 @@ class LicorneController extends Controller
     {
 		$em = $this->getDoctrine()->getManager();
         $licorne = new Licorne();
-		$categories = $em->getRepository('LicornesBundle:LicorneCategorie')->findAll();
-		$maCategorie = $categories[rand(0, count($categories))];
-		var_dump($licorne);
-		var_dump($maCategorie);
-		LicornesBundle::Entity::Licorne::$licorne.setCouleurYeux($maCategorie.couleurYeux);
-		var_dump($licorne);
 
         $form = $this->createForm('LicornesBundle\Form\LicorneType', $licorne);
         $form->handleRequest($request);
+		$categories = $em->getRepository('LicornesBundle:LicorneCategorie')->findAll();
+		$maCategorie = $categories[rand(0, count($categories) - 1)];
+		$licorne->setTypePelage($maCategorie->getTypePelage());
+		$licorne->setCouleurYeux($maCategorie->getCouleurYeux());
+		$licorne->setTypeCorne($maCategorie->getTypeCorne());
+		$licorne->setHabitat($maCategorie->getHabitat());
 
-        if ($form->isSubmitted() && $form->isValid()) {
+		echo '<h3> Felicitation ! vous avez attrape une nouvelle licorne !</h3>';
+		if ($form->isSubmitted() && $licorne->getNom()) {
             $em = $this->getDoctrine()->getManager();
+
+			var_dump($licorne);
             $em->persist($licorne);
             $em->flush();
 
-            return $this->redirectToRoute('licorne_show', array('id' => $licorne->getId()));
+			return $this->redirectToRoute('licorne_show', array('id' => $licorne->getId()));
         }
 
         return $this->render('LicornesBundle:licorne:new.html.twig', array(
-            'licorne' => $licorne,
-            'form' => $form->createView(),
-        ));
+				'licorne' => $licorne,
+				'form' => $form->createView(),
+			)
+		);
     }
 
     /**
