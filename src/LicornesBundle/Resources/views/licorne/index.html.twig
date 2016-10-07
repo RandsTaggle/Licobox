@@ -31,16 +31,13 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('licorne_show', { 'id': licorne.id }) }}">afficher</a>
+                            <a href="{{ path('licorne_show', { 'id': licorne.id }) }}">afficher / ajouter un commentaire</a>
                         </li>
                         <li>
                             <a href="{{ path('licorne_edit', { 'id': licorne.id }) }}">modifier</a>
                         </li>
                         <li>
                             <a href="{{ path('licorne_delete', { 'id': licorne.id }) }}">supprimer</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('commentaire_new', { 'licorneId': licorne.id }) }}">ajouter un commentaire</a>
                         </li>
                     </ul>
                 </td>

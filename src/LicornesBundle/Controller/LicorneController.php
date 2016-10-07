@@ -76,16 +76,16 @@ class LicorneController extends Controller
 		$deleteForm = $this->createDeleteForm($licorne);
 		$commentaires = $em->getRepository('LicornesBundle:Commentaire')->findAll(array('licorne' => $licorne));
 		$commentaire = new Commentaire();
-		$commentaire->setLicorne($licorne);
-		/*$form = CommentaireController::createForm('LicornesBundle\Form\CommentaireType', $newCommentaire);;
 
-
-		if ($form->isSubmitted() && $form->isValid()) {
+		if (isset($_POST['contenu']) && !empty($_POST['contenu'])) {
+			$commentaire->setLicorne($licorne);
+			$commentaire->setContenu($_POST['contenu']);
+			$licorne->addCommentaire($commentaire);
 			$em->persist($commentaire);
 			$em->flush();
 
 			return $this->redirectToRoute('licorne_show', array('id' => $licorne->getId()));
-		}*/
+		}
 
         return $this->render('LicornesBundle:licorne:show.html.twig', array(
             'licorne' => $licorne,
