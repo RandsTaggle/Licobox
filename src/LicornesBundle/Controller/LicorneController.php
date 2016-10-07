@@ -128,7 +128,10 @@ class LicorneController extends Controller
     {
         $form = $this->createDeleteForm($licorne);
         $form->handleRequest($request);
-
+		$commentaires = $licorne->getCommentaires();
+		/*foreach ($commentaires as $commentaire)
+			$commentaire->
+*/
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($licorne);
