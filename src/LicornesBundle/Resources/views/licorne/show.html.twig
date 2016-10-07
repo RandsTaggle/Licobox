@@ -43,6 +43,18 @@
             </tr>
         </tbody>
     </table>
+    <table>
+        <th colspan="100%">Commentaires</th>
+        <tr>
+            {% for com in licorne.commentaires %}
+                <td>{{ com.contenu }}</td>
+            {% endfor %}
+        </tr>
+    </table>
+    {#{{ form_start(commentaire.contenu) }}#}
+        {#{{ form_widget(commentaire.contenu) }}#}
+        {#<input type="submit" value="Create" />#}
+    {#{{ form_end(create_form.commentaire.contenu) }}#}
 
     <ul>
         <li>

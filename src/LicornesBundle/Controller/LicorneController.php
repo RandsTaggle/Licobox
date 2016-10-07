@@ -75,10 +75,10 @@ class LicorneController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$deleteForm = $this->createDeleteForm($licorne);
 		$commentaires = $em->getRepository('LicornesBundle:Commentaire')->findAll(array('licorne' => $licorne));
-		/*$newCommentaire = new Commentaire();
-		$form = CommentaireController::createForm('LicornesBundle\Form\CommentaireType', $newCommentaire);;
+		$commentaire = new Commentaire();
+		$commentaire->setLicorne($licorne);
+		/*$form = CommentaireController::createForm('LicornesBundle\Form\CommentaireType', $newCommentaire);;
 
-		$newCommentaire->setLicorne($licorne);
 
 		if ($form->isSubmitted() && $form->isValid()) {
 			$em->persist($commentaire);
@@ -90,7 +90,8 @@ class LicorneController extends Controller
         return $this->render('LicornesBundle:licorne:show.html.twig', array(
             'licorne' => $licorne,
 			'commentaires' => $commentaires,
-            'delete_form' => $deleteForm->createView(),
+			'commentaire' => $commentaire,
+            'delete_form' => $deleteForm->createView()
         ));
     }
 
