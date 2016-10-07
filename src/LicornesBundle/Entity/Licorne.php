@@ -10,18 +10,24 @@ use Symfony\Component\Validator\Constraints\DateTime;
  */
 class Licorne
 {
-	public function __construct() {
+	public function __construct()
+	{
 		$this->datePrise = new \DateTime('now');
+		return $this;
 	}
 
-
+	public function __toString()
+	{
+		return $this->nom;
+	}
 
 	/**************************/
 	/***** GENERATED CODE *****/
 	/**************************/
 
+
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -54,6 +60,16 @@ class Licorne
      * @var \DateTime
      */
     private $datePrise;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $commentaires;
+
+    /**
+     * @var \LicornesBundle\Entity\LicorneCategorie
+     */
+    private $categorie;
 
 
     /**
@@ -182,6 +198,19 @@ class Licorne
     }
 
     /**
+     * Set datePrise
+     *
+     * @param \DateTime $datePrise
+     * @return Licorne
+     */
+    public function setDatePrise($datePrise)
+    {
+        $this->datePrise = $datePrise;
+
+        return $this;
+    }
+
+    /**
      * Get datePrise
      *
      * @return \DateTime 
@@ -189,5 +218,61 @@ class Licorne
     public function getDatePrise()
     {
         return $this->datePrise;
+    }
+
+    /**
+     * Add commentaires
+     *
+     * @param \LicornesBundle\Entity\Commentaire $commentaires
+     * @return Licorne
+     */
+    public function addCommentaire(\LicornesBundle\Entity\Commentaire $commentaires)
+    {
+        $this->commentaires[] = $commentaires;
+
+        return $this;
+    }
+
+    /**
+     * Remove commentaires
+     *
+     * @param \LicornesBundle\Entity\Commentaire $commentaires
+     */
+    public function removeCommentaire(\LicornesBundle\Entity\Commentaire $commentaires)
+    {
+        $this->commentaires->removeElement($commentaires);
+    }
+
+    /**
+     * Get commentaires
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCommentaires()
+    {
+        return $this->commentaires;
+    }
+
+    /**
+     * Set categorie
+     *
+     * @param \LicornesBundle\Entity\LicorneCategorie $categorie
+     * @return Licorne
+     */
+    public function setCategorie(\LicornesBundle\Entity\LicorneCategorie $categorie)
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return \LicornesBundle\Entity\LicorneCategorie 
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
     }
 }

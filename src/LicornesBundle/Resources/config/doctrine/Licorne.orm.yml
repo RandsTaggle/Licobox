@@ -25,4 +25,17 @@ LicornesBundle\Entity\Licorne:
             type: text
         datePrise:
             type: datetime
+
+    oneToMany:
+        commentaires:
+            targetEntity: Commentaire
+            mappedBy: licorne
+    manyToOne:
+        categorie:
+            targetEntity: LicorneCategorie
+            inversedBy: licornes
+            joinColumn:
+                name: categorie_id
+                referencedColumnName: id
+                nullable: false
     lifecycleCallbacks: {  }

@@ -10,3 +10,7 @@ licornes_licorne:
 licornes_licornecategorie:
         resource: "@LicornesBundle/Resources/config/routing/licornecategorie.yml"
         prefix:   /licornecategorie
+
+licornes_commentaire:
+        resource: "@LicornesBundle/Resources/config/routing/commentaire.yml"
+        prefix:   /commentaire

@@ -23,4 +23,13 @@ LicornesBundle\Entity\LicorneCategorie:
             length: 255
         habitat:
             type: text
+        image:
+            type: string
+            length: 255
+
+    oneToMany:
+        licornes:
+            targetEntity: Licorne
+            mappedBy: categorie
+
     lifecycleCallbacks: {  }

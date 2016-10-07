@@ -14,6 +14,14 @@
                 <td>{{ licorne.nom }}</td>
             </tr>
             <tr>
+                <th>Race</th>
+                <td>{{ licorne.categorie.nom }}</td>
+            </tr>
+			<tr>
+				<th>Photo</th>
+				<td><img src="{{ asset(licorne.categorie.image) }}" alt="Image de {{ licorne.nom }} qui prend la pose !"> </td>
+			</tr>
+            <tr>
                 <th>Typepelage</th>
                 <td>{{ licorne.typePelage }}</td>
             </tr>
