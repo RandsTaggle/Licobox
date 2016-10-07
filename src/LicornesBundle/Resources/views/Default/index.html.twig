@@ -1,14 +1,27 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport"
-		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
-</head>
-<body>
-	<h1>Hello World!</h1>
-	<a href="licorne"><button>Jouer avec les licornes</button></a>
-</body>
-</html>
+{% extends 'base.html.twig' %}
+
+{#<!doctype html>#}
+{#<html lang="en">#}
+{#<head>#}
+	{#<meta charset="UTF-8">#}
+	{#<meta name="viewport"#}
+		  {#content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">#}
+	{#<meta http-equiv="X-UA-Compatible" content="ie=edge">#}
+	{#<title>Document</title>#}
+{#</head>#}
+{#<body>#}
+
+{% block body %}
+    <div class="jumbotron">
+        <h1 class="card-panel text-center">Hello Licorns World!</h1>
+    </div>
+
+    <div class="text-center">
+        <a href="licorne">
+            <button class="btn btn-primary btn-lg">Jouer avec mes licornes</button>
+        </a>
+    </div>
+
+{% endblock %}
+{#</body>#}
+{#</html>#}
