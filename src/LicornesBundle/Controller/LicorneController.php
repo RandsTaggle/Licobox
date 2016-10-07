@@ -2,10 +2,12 @@
 
 namespace LicornesBundle\Controller;
 
+use LicornesBundle\Entity\Commentaire;
 use LicornesBundle\LicornesBundle;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use LicornesBundle\Controller\CommentaireController;
 use LicornesBundle\Entity\Licorne;
 
 /**
@@ -70,10 +72,24 @@ class LicorneController extends Controller
      */
     public function showAction(Licorne $licorne)
     {
-        $deleteForm = $this->createDeleteForm($licorne);
+		$em = $this->getDoctrine()->getManager();
+		$deleteForm = $this->createDeleteForm($licorne);
+		$commentaires = $em->getRepository('LicornesBundle:Commentaire')->findAll(array('licorne' => $licorne));
+		/*$newCommentaire = new Commentaire();
+		$form = CommentaireController::createForm('LicornesBundle\Form\CommentaireType', $newCommentaire);;
+
+		$newCommentaire->setLicorne($licorne);
+
+		if ($form->isSubmitted() && $form->isValid()) {
+			$em->persist($commentaire);
+			$em->flush();
+
+			return $this->redirectToRoute('licorne_show', array('id' => $licorne->getId()));
+		}*/
 
         return $this->render('LicornesBundle:licorne:show.html.twig', array(
             'licorne' => $licorne,
+			'commentaires' => $commentaires,
             'delete_form' => $deleteForm->createView(),
         ));
     }
