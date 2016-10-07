@@ -9,8 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class LicorneCategorie
 {
+
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -39,6 +40,18 @@ class LicorneCategorie
      */
     private $habitat;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $licornes;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->licornes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -163,5 +176,66 @@ class LicorneCategorie
     public function getHabitat()
     {
         return $this->habitat;
+    }
+
+    /**
+     * Add licornes
+     *
+     * @param \LicornesBundle\Entity\Licorne $licornes
+     * @return LicorneCategorie
+     */
+    public function addLicorne(\LicornesBundle\Entity\Licorne $licornes)
+    {
+        $this->licornes[] = $licornes;
+
+        return $this;
+    }
+
+    /**
+     * Remove licornes
+     *
+     * @param \LicornesBundle\Entity\Licorne $licornes
+     */
+    public function removeLicorne(\LicornesBundle\Entity\Licorne $licornes)
+    {
+        $this->licornes->removeElement($licornes);
+    }
+
+    /**
+     * Get licornes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLicornes()
+    {
+        return $this->licornes;
+    }
+    /**
+     * @var string
+     */
+    private $image;
+
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     * @return LicorneCategorie
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

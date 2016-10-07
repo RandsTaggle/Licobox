@@ -42,6 +42,7 @@ class LicorneController extends Controller
         $form->handleRequest($request);
 		$categories = $em->getRepository('LicornesBundle:LicorneCategorie')->findAll();
 		$maCategorie = $categories[rand(0, count($categories) - 1)];
+		$licorne->setCategorie($maCategorie);
 		$licorne->setTypePelage($maCategorie->getTypePelage());
 		$licorne->setCouleurYeux($maCategorie->getCouleurYeux());
 		$licorne->setTypeCorne($maCategorie->getTypeCorne());
@@ -51,10 +52,8 @@ class LicorneController extends Controller
 		if ($form->isSubmitted() && $licorne->getNom()) {
             $em = $this->getDoctrine()->getManager();
 
-			var_dump($licorne);
             $em->persist($licorne);
             $em->flush();
-
 			return $this->redirectToRoute('licorne_show', array('id' => $licorne->getId()));
         }
 

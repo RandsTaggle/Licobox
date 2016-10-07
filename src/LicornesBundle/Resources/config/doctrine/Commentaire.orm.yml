@@ -1,0 +1,23 @@
+LicornesBundle\Entity\Commentaire:
+    type: entity
+    table: null
+    repositoryClass: LicornesBundle\Repository\CommentaireRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        contenu:
+            type: text
+
+    manyToOne:
+        licorne:
+            targetEntity: Licorne
+            inversedBy: commentaires
+            joinColumn:
+                name: licorne_id
+                referencedColumnName: id
+                nullable: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Commentaire creation</h1>
+
+    {{ form_start(form) }}
+    {{ dump(licorneId) }}
+        {% set licorneId = app.request.query.get("page") | licorneId %}
+
+        {{ form_widget(form.licorne) }}
+        {% if licorneId > 0 %}
+            <p>{{  }}</p>
+        {% else %}
+            {{ form_widget(form.contenu) }}
+        {% endif %}
+        <input type="submit" value="Create" />
+    {{ form_end(form.contenu) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('commentaire_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

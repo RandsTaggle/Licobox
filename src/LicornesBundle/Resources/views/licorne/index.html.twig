@@ -8,11 +8,12 @@
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
-                <th>Typepelage</th>
-                <th>Couleuryeux</th>
-                <th>Typecorne</th>
+                <th>Race</th>
+                <th>Type de pelage</th>
+                <th>Couleur des yeux</th>
+                <th>Type de corne</th>
                 <th>Habitat</th>
-                <th>Dateprise</th>
+                <th>Date de capture</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -21,6 +22,7 @@
             <tr>
                 <td><a href="{{ path('licorne_show', { 'id': licorne.id }) }}">{{ licorne.id }}</a></td>
                 <td>{{ licorne.nom }}</td>
+                <td>{{ licorne.categorie.nom }}<img src="{{ asset(licorne.categorie.image) }}" alt="Image de {{ licorne.nom }} qui prend la pose !"></td>
                 <td>{{ licorne.typePelage }}</td>
                 <td>{{ licorne.couleurYeux }}</td>
                 <td>{{ licorne.typeCorne }}</td>
@@ -29,10 +31,16 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('licorne_show', { 'id': licorne.id }) }}">show</a>
+                            <a href="{{ path('licorne_show', { 'id': licorne.id }) }}">afficher</a>
                         </li>
                         <li>
-                            <a href="{{ path('licorne_edit', { 'id': licorne.id }) }}">edit</a>
+                            <a href="{{ path('licorne_edit', { 'id': licorne.id }) }}">modifier</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('licorne_delete', { 'id': licorne.id }) }}">supprimer</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('commentaire_new', { 'licorneId': licorne.id }) }}">ajouter un commentaire</a>
                         </li>
                     </ul>
                 </td>
@@ -44,6 +52,7 @@
     <ul>
         <li>
             <a href="{{ path('licorne_new') }}">Create a new entry</a>
+            <a href="{{ path('commentaire_new') }}">ajouter un commentaire</a>
         </li>
     </ul>
 {% endblock %}
