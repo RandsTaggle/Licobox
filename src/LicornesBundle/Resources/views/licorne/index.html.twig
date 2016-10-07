@@ -1,54 +1,84 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Licorne list</h1>
 
-    <table>
+<div class="container-fluid">
+<div class="panel panel-primary">
+    <table class="table table-bordered table-striped table-condensed">
+        <div class="panel-heading">
+
+            <h1 class="panel-title text-center">L I C O R N E S</h1>
+
+        </div>
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Race</th>
-                <th>Type de pelage</th>
-                <th>Couleur des yeux</th>
-                <th>Type de corne</th>
-                <th>Habitat</th>
-                <th>Date de capture</th>
-                <th>Actions</th>
+            <tr class="">
+                <th class="text-center">Id</th>
+                <th class="text-center">Nom</th>
+                <th class="text-center">Race</th>
+                <th class="text-center">Type de pelage</th>
+                <th class="text-center" >Couleur des yeux</th>
+                <th class="text-center">Type de corne</th>
+                <th class="text-center">Habitat</th>
+                <th class="text-center">Date de capture</th>
+                <th class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for licorne in licornes %}
-            <tr>
+            <tr class="">
                 <td><a href="{{ path('licorne_show', { 'id': licorne.id }) }}">{{ licorne.id }}</a></td>
-                <td>{{ licorne.nom }}</td>
-                <td>{{ licorne.categorie.nom }}<img src="{{ asset(licorne.categorie.image) }}" alt="Image de {{ licorne.nom }} qui prend la pose !"></td>
+                <td class="bg-primary text-primary">{{ licorne.nom }}</td>
+                <td class="bg-success text-primary">{{ licorne.categorie.nom }}<img src="{{ asset(licorne.categorie.image) }}" alt="Image de {{ licorne.nom }} qui prend la pose !"></td>
                 <td>{{ licorne.typePelage }}</td>
-                <td>{{ licorne.couleurYeux }}</td>
-                <td>{{ licorne.typeCorne }}</td>
-                <td>{{ licorne.habitat }}</td>
+                <td class="bg-warning">{{ licorne.couleurYeux }}</td>
+                <td class="bg-primary">{{ licorne.typeCorne }}</td>
+                <td class="bg-info text-primary">{{ licorne.habitat }}</td>
                 <td>{% if licorne.datePrise %}{{ licorne.datePrise|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
-                    <ul>
-                        <li>
+
+                    <nav>
+                    <ul class="nav navbar-inverse">
+                        <li class="btn">
+
                             <a href="{{ path('licorne_show', { 'id': licorne.id }) }}">afficher / ajouter un commentaire</a>
+
                         </li>
-                        <li>
+                        <li class="btn">
                             <a href="{{ path('licorne_edit', { 'id': licorne.id }) }}">modifier</a>
                         </li>
+
                     </ul>
+                    </nav>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+</div>
+    </div>
 
-    <ul>
+    <nav class="nav navbar-default" >
+    <ul class="nav navbar-nav">
         <li>
             <a href="{{ path('licorne_new') }}">Aller a la chasse aux licornes</a>
+
+        </li>
+        <li>
             <a href="{{ path('commentaire_new') }}">ajouter un commentaire</a>
         </li>
+
+
     </ul>
-    <a href="../licornecategorie"><button>Gerer les categories [ADMIN]</button></a>
-    <a href="../commentaire"><button>Devoiler les mysteres des commentaires</button></a>
+
+    </nav>
+<nav class="nav navbar-inverse">
+    <ul class="nav navbar-nav ">
+    <li>
+    <a href="../licornecategorie"><button class="btn btn-default ">Gerer les categories [ADMIN]</button></a>
+    </li>
+    <li>
+    <a href="../commentaire"><button class="btn btn-default">Devoiler les mysteres des commentaires</button></a>
+    </li>
+        </ul>
+</nav>
 {% endblock %}

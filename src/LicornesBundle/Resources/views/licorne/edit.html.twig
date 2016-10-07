@@ -2,11 +2,13 @@
 
 {% block body %}
     <h1>Licorne edit</h1>
-
-    {{ form_start(edit_form) }}
+    <div class="form-group">
+        {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+        <input type="submit" value="Edit" class="btn btn-primary btn-lg btn-block"/>
+        {{ form_end(edit_form) }}
+    </div>
+
 
     <ul>
         <li>
@@ -14,7 +16,7 @@
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <input type="submit" value="Delete" class="btn btn-danger btn-lg btn-block">
             {{ form_end(delete_form) }}
         </li>
     </ul>
