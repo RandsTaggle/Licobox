@@ -51,10 +51,15 @@
             {% endfor %}
         </tr>
     </table>
-    {#{{ form_start(commentaire.contenu) }}#}
-        {#{{ form_widget(commentaire.contenu) }}#}
-        {#<input type="submit" value="Create" />#}
-    {#{{ form_end(create_form.commentaire.contenu) }}#}
+
+    <div class="add-Commentaire">
+        <h3>Ajouter un petit commentaire. <3</h3>
+        <form action="{{ path('licorne_show', { 'id': licorne.id}) }}" method="post">
+            <input name="contenu" type="text"/>
+            <input type="submit" value="Create" />
+        </form>
+    </div>
+
 
     <ul>
         <li>

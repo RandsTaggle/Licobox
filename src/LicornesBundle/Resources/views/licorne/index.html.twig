@@ -35,20 +35,18 @@
                 <td class="bg-info text-primary">{{ licorne.habitat }}</td>
                 <td>{% if licorne.datePrise %}{{ licorne.datePrise|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
+
                     <nav>
                     <ul class="nav navbar-inverse">
                         <li class="btn">
-                            <a href="{{ path('licorne_show', { 'id': licorne.id }) }}">afficher</a>
+
+                            <a href="{{ path('licorne_show', { 'id': licorne.id }) }}">afficher / ajouter un commentaire</a>
+
                         </li>
                         <li class="btn">
                             <a href="{{ path('licorne_edit', { 'id': licorne.id }) }}">modifier</a>
                         </li>
-                        <li class="btn">
-                            <a href="{{ path('licorne_delete', { 'id': licorne.id }) }}">supprimer</a>
-                        </li>
-                        <li class="btn">
-                            <a href="{{ path('commentaire_new', { 'licorneId': licorne.id }) }}">ajouter un commentaire</a>
-                        </li>
+
                     </ul>
                     </nav>
                 </td>
@@ -59,12 +57,28 @@
 </div>
     </div>
 
-    <nav>
-    <ul class="nav navbar-inverse">
+    <nav class="nav navbar-default" >
+    <ul class="nav navbar-nav">
         <li>
-            <a href="{{ path('licorne_new') }}">Create a new entry</a>
+            <a href="{{ path('licorne_new') }}">Aller a la chasse aux licornes</a>
+
+        </li>
+        <li>
             <a href="{{ path('commentaire_new') }}">ajouter un commentaire</a>
         </li>
+
+
     </ul>
+
     </nav>
+<nav class="nav navbar-inverse">
+    <ul class="nav navbar-nav ">
+    <li>
+    <a href="licornecategorie"><button class="btn btn-default ">Gerer les categories [ADMIN]</button></a>
+    </li>
+    <li>
+    <a href="commentaire"><button class="btn btn-default">Devoiler les mysteres des commentaires</button></a>
+    </li>
+        </ul>
+</nav>
 {% endblock %}

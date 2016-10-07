@@ -8,7 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Contenu</th>
-                <th>Licorneid</th>
+                <th>Licorne</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -21,10 +21,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('commentaire_show', { 'id': commentaire.id }) }}">show</a>
+                            <a href="{{ path('commentaire_show', { 'id': commentaire.id }) }}">afficher</a>
                         </li>
                         <li>
-                            <a href="{{ path('commentaire_edit', { 'id': commentaire.id }) }}">edit</a>
+                            <a href="{{ path('commentaire_edit', { 'id': commentaire.id }) }}">modifier</a>
                         </li>
                     </ul>
                 </td>
@@ -35,7 +35,9 @@
 
     <ul>
         <li>
-            <a href="{{ path('commentaire_new') }}">Create a new entry</a>
+            <a href="{{ path('commentaire_new') }}">Creer un nouveau commentaire</a>
         </li>
     </ul>
+    <a href="../licorne"><button>Jouer avec les licornes</button></a>
+    <a href="../licornecategorie"><button>Gerer les categories [ADMIN]</button></a>
 {% endblock %}

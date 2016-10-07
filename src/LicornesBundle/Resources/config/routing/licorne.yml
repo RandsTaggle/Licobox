@@ -6,7 +6,7 @@ licorne_index:
 licorne_show:
     path:     /{id}/show
     defaults: { _controller: "LicornesBundle:Licorne:show" }
-    methods:  GET
+    methods:  [GET, POST]
 
 licorne_new:
     path:     /new
