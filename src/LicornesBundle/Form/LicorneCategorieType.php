@@ -20,6 +20,7 @@ class LicorneCategorieType extends AbstractType
             ->add('couleurYeux')
             ->add('typeCorne')
             ->add('habitat')
+			->add('image')
         ;
     }
     

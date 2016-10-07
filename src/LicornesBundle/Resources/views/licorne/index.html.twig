@@ -31,16 +31,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('licorne_show', { 'id': licorne.id }) }}">afficher</a>
+                            <a href="{{ path('licorne_show', { 'id': licorne.id }) }}">afficher / ajouter un commentaire</a>
                         </li>
                         <li>
                             <a href="{{ path('licorne_edit', { 'id': licorne.id }) }}">modifier</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('licorne_delete', { 'id': licorne.id }) }}">supprimer</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('commentaire_new', { 'licorneId': licorne.id }) }}">ajouter un commentaire</a>
                         </li>
                     </ul>
                 </td>
@@ -51,8 +45,10 @@
 
     <ul>
         <li>
-            <a href="{{ path('licorne_new') }}">Create a new entry</a>
+            <a href="{{ path('licorne_new') }}">Aller a la chasse aux licornes</a>
             <a href="{{ path('commentaire_new') }}">ajouter un commentaire</a>
         </li>
     </ul>
+    <a href="../licornecategorie"><button>Gerer les categories [ADMIN]</button></a>
+    <a href="../commentaire"><button>Devoiler les mysteres des commentaires</button></a>
 {% endblock %}

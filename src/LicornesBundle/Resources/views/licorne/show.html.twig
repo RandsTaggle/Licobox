@@ -43,6 +43,23 @@
             </tr>
         </tbody>
     </table>
+    <table>
+        <th colspan="100%">Commentaires</th>
+        <tr>
+            {% for com in licorne.commentaires %}
+                <td>{{ com.contenu }}</td>
+            {% endfor %}
+        </tr>
+    </table>
+
+    <div class="add-Commentaire">
+        <h3>Ajouter un petit commentaire. <3</h3>
+        <form action="{{ path('licorne_show', { 'id': licorne.id}) }}" method="post">
+            <input name="contenu" type="text"/>
+            <input type="submit" value="Create" />
+        </form>
+    </div>
+
 
     <ul>
         <li>
